@@ -130,9 +130,9 @@ def get_chain():
 def is_valid():
     is_valid = blockchain.is_chain_valid(blockchain.chain)
     if is_valid:
-        response = {'message': 'All good. The Blockchain is valid.'}
+        response = {'message': 'O Blockchain é válido.'}
     else:
-        response = {'message': 'We have a problem. The Blockchain is not valid.'}
+        response = {'message': 'Nós temos um problema. O Blockchain não é válido.'}
     return jsonify(response), 200
 
 # Adicionar a transação ao blockchain
@@ -141,7 +141,7 @@ def add_transaction():
     json = request.get_json()                                  
     transaction_keys = ['sender', 'receiver', 'amount']        
     if not all(key in json for key in transaction_keys):       
-        return 'Alsguns elementos estão faltando', 400         
+        return 'Alguns elementos estão faltando', 400         
     index = blockchain.add_transaction(json['sender'], json['receiver'], json['amount'])   
     response = {'message': f'Esta transação será adicionada ao bloco {index}'}  
     return jsonify(response), 201   
